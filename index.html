@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRAME.LAB — High-CTR YouTube Thumbnail Engineering</title>
+  <meta name="description" content="Thumbnails engineered for click-through velocity. Packaging and visual psychology for top 1% YouTube creators." />
+  
+  <!-- Google Fonts: Plus Jakarta Sans, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- Ambient Background Spotlights -->
+  <div class="ambient-glow glow-indigo" aria-hidden="true"></div>
+  <div class="ambient-glow glow-cyan" aria-hidden="true"></div>
+  <div class="ambient-glow glow-crimson" aria-hidden="true"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Calendly Quick-Modal -->
+  <div id="calendly-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="badge-mono"><i data-lucide="calendar" class="icon-xs"></i> 15-MIN PACKAGING AUDIT</span>
+          <h3 id="modal-title">Book a Discovery Call</h3>
+        </div>
+        <button id="close-modal-btn" class="icon-btn" aria-label="Close modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted">Select a time slot strategy session to audit your channel's current CTR bottleneck and packaging roadmap.</p>
+        <div class="simulated-calendar">
+          <div class="cal-row">
+            <span class="cal-day">Tomorrow — 11:00 AM EST</span>
+            <button class="btn btn-secondary btn-sm select-slot-btn" data-slot="Tomorrow at 11:00 AM EST">Select Slot</button>
+          </div>
+          <div class="cal-row">
+            <span class="cal-day">Tomorrow — 3:30 PM EST</span>
+            <button class="btn btn-secondary btn-sm select-slot-btn" data-slot="Tomorrow at 3:30 PM EST">Select Slot</button>
+          </div>
+          <div class="cal-row">
+            <span class="cal-day">Thursday — 1:00 PM EST</span>
+            <button class="btn btn-secondary btn-sm select-slot-btn" data-slot="Thursday at 1:00 PM EST">Select Slot</button>
+          </div>
+        </div>
+        <p class="modal-footnote">Prefer async? Copy our Discord tag <code>framelab.gg</code> or fill out the brief below.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- A. Sticky Glassmorphic Navbar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo" aria-label="FRAME.LAB Home">
+        <span class="logo-mark"><i data-lucide="scan-eye"></i></span>
+        <span class="logo-text">FRAME<span class="accent-dot">.</span>LAB</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#before-after" class="nav-link">Before/After</a>
+        <a href="#yt-previewer" class="nav-link">YT Previewer</a>
+        <a href="#ab-lab" class="nav-link">A/B Lab</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-pill" title="Current monthly retainer capacity">
+          <span class="pulse-dot"></span>
+          <span class="status-text">2 Retainer Slots Open</span>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-sm">
+          <span>Book a Call</span>
+          <i data-lucide="arrow-up-right" class="icon-xs"></i>
+        </a>
+        <button id="mobile-menu-toggle" class="icon-btn mobile-only" aria-label="Toggle Menu" aria-expanded="false">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer glass-panel" aria-hidden="true">
+      <nav class="mobile-nav-list">
+        <a href="#work" class="mobile-nav-link">Work Portfolio</a>
+        <a href="#before-after" class="mobile-nav-link">Before / After Slider</a>
+        <a href="#yt-previewer" class="mobile-nav-link">Live YT Feed Previewer</a>
+        <a href="#ab-lab" class="mobile-nav-link">A/B Test Lab</a>
+        <a href="#pricing" class="mobile-nav-link">Pricing Packages</a>
+        <a href="#faq" class="mobile-nav-link">Workflow FAQ</a>
+        <div class="mobile-drawer-footer">
+          <div class="status-pill">
+            <span class="pulse-dot"></span>
+            <span>2 Retainer Slots Open for This Month</span>
+          </div>
+          <a href="#contact" class="btn btn-primary w-full">Book a Call</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- A. Bento Grid Hero Section -->
+    <section class="hero-section section-padding">
+      <div class="container">
+        <div class="bento-hero-grid">
+          
+          <!-- Main Hero Cell -->
+          <div class="bento-cell hero-main-cell glass-panel">
+            <div class="eyebrow-row">
+              <span class="badge-mono badge-crimson"><i data-lucide="flame" class="icon-xs"></i> VISUAL PACKAGING STUDIO</span>
+              <span class="badge-mono">YT TEST &amp; COMPARE CERTIFIED</span>
+            </div>
+            <h1 class="hero-headline">
+              Thumbnails Engineered for <span class="text-gradient">Click-Through Velocity.</span>
+            </h1>
+            <p class="hero-subheadline">
+              Great videos die behind mediocre packaging. We combine pre-attentive visual psychology, 3D depth compositing, and iterative A/B testing to turn passive impressions into compulsive clicks.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#work" class="btn btn-primary btn-lg">
+                <span>View Portfolio</span>
+                <i data-lucide="layers" class="icon-sm"></i>
+              </a>
+              <button type="button" class="btn btn-glass btn-lg copy-discord-btn" data-discord="framelab.gg">
+                <i data-lucide="message-square" class="icon-sm"></i>
+                <span>Copy Discord: <strong class="mono-inline">framelab.gg</strong></span>
+                <i data-lucide="copy" class="icon-xs muted-icon"></i>
+              </button>
+            </div>
+            <div class="hero-trust-strip">
+              <span class="trust-label">Trusted by creators scaling past</span>
+              <div class="trust-badges">
+                <span class="mini-pill">100K+</span>
+                <span class="mini-pill">1M+</span>
+                <span class="mini-pill">10M+ Subscribers</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured Reel / Interactive Showcase Cell -->
+          <div class="bento-cell hero-reel-cell glass-panel">
+            <div class="reel-header">
+              <div class="reel-meta">
+                <span class="badge-mono">FLAGSHIP CASE BREAKDOWN</span>
+                <h2 class="reel-title" id="hero-reel-title">Survived 50 Hours in Zero Gravity</h2>
+              </div>
+              <div class="reel-controls">
+                <button class="icon-btn-sm" id="reel-prev" aria-label="Previous featured thumbnail"><i data-lucide="chevron-left"></i></button>
+                <button class="icon-btn-sm" id="reel-next" aria-label="Next featured thumbnail"><i data-lucide="chevron-right"></i></button>
+              </div>
+            </div>
+
+            <div class="reel-stage" id="hero-reel-stage">
+              <img id="hero-reel-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=85" alt="Featured Thumbnail Mockup" class="reel-thumb-img" />
+              <div class="thumb-graphic-overlay">
+                <span class="thumb-hook-tag" id="hero-reel-hook">ZERO GRAVITY!</span>
+                <span class="yt-duration">18:42</span>
+              </div>
+              <!-- Attention Heatmap Hotspots -->
+              <div class="focal-hotspot hotspot-1" title="Primary Eye Fixation (0.2s)">
+                <span class="hotspot-ring"></span>
+                <span class="hotspot-tag">1st Fixation: 0.2s</span>
+              </div>
+              <div class="focal-hotspot hotspot-2" title="Curiosity Gap Anchor">
+                <span class="hotspot-ring"></span>
+                <span class="hotspot-tag">Curiosity Gap</span>
+              </div>
+            </div>
+
+            <div class="reel-footer">
+              <div class="reel-stat">
+                <span class="stat-label">Baseline CTR</span>
+                <span class="stat-val mono text-muted" id="hero-reel-base">5.4%</span>
+              </div>
+              <div class="reel-arrow"><i data-lucide="arrow-right" class="icon-xs"></i></div>
+              <div class="reel-stat">
+                <span class="stat-label">Post-Lab CTR</span>
+                <span class="stat-val mono text-emerald" id="hero-reel-after">11.8% (+6.4%)</span>
+              </div>
+              <button class="btn btn-secondary btn-xs ml-auto" id="reel-test-in-feed-btn">
+                <i data-lucide="tv" class="icon-xs"></i> Test in Feed
+              </button>
+            </div>
+          </div>
+
+          <!-- Metric Cell 1 -->
+          <div class="bento-cell metric-cell glass-panel">
+            <div class="metric-top">
+              <span class="metric-icon-box indigo"><i data-lucide="trending-up"></i></span>
+              <span class="badge-mono">+94 AUDITED VIDEOS</span>
+            </div>
+            <div class="metric-value mono">+3.8%</div>
+            <div class="metric-label">Avg. Net CTR Lift Across Retainer Channels</div>
+          </div>
+
+          <!-- Metric Cell 2 -->
+          <div class="bento-cell metric-cell glass-panel">
+            <div class="metric-top">
+              <span class="metric-icon-box cyan"><i data-lucide="eye"></i></span>
+              <span class="badge-mono">ORGANIC REACH</span>
+            </div>
+            <div class="metric-value mono">420M+</div>
+            <div class="metric-label">Verified Client Views Generated Since 2023</div>
+          </div>
+
+          <!-- Metric Cell 3 -->
+          <div class="bento-cell metric-cell glass-panel">
+            <div class="metric-top">
+              <span class="metric-icon-box crimson"><i data-lucide="zap"></i></span>
+              <span class="badge-mono">RAPID SPRINT</span>
+            </div>
+            <div class="metric-value mono">&lt;24h</div>
+            <div class="metric-label">First Concept Delivery With A/B Variants</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- B. Filterable Portfolio Grid -->
+    <section id="work" class="section-padding">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="badge-mono"><i data-lucide="grid" class="icon-xs"></i> SELECTED PACKAGING ARCHIVE</span>
+            <h2 class="section-title">Engineered to Stop the Scroll</h2>
+          </div>
+          <p class="section-desc">
+            Click any thumbnail card to load it directly into the <strong>Live YouTube Feed Previewer</strong> below and inspect how it holds up at scale.
+          </p>
+        </div>
+
+        <!-- Interactive Category Filter Pills -->
+        <div class="filter-bar" role="tablist" aria-label="Portfolio Categories">
+          <button class="filter-pill active" data-filter="All" role="tab" aria-selected="true">
+            <span>All Work</span>
+            <span class="count-badge mono" id="count-All">12</span>
+          </button>
+          <button class="filter-pill" data-filter="Gaming" role="tab" aria-selected="false">
+            <span>Gaming</span>
+            <span class="count-badge mono" id="count-Gaming">3</span>
+          </button>
+          <button class="filter-pill" data-filter="IRL" role="tab" aria-selected="false">
+            <span>IRL</span>
+            <span class="count-badge mono" id="count-IRL">3</span>
+          </button>
+          <button class="filter-pill" data-filter="Tech" role="tab" aria-selected="false">
+            <span>Tech</span>
+            <span class="count-badge mono" id="count-Tech">2</span>
+          </button>
+          <button class="filter-pill" data-filter="Finance" role="tab" aria-selected="false">
+            <span>Finance</span>
+            <span class="count-badge mono" id="count-Finance">2</span>
+          </button>
+          <button class="filter-pill" data-filter="Vlogs" role="tab" aria-selected="false">
+            <span>Vlogs</span>
+            <span class="count-badge mono" id="count-Vlogs">2</span>
+          </button>
+        </div>
+
+        <!-- Portfolio Grid Container (Populated & Filterable via JS) -->
+        <div id="portfolio-grid" class="portfolio-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- C. Interactive Feature 1: Before / After Concept Slider -->
+    <section id="before-after" class="section-padding">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="badge-mono"><i data-lucide="sliders" class="icon-xs"></i> RAW FRAME VS. FINAL COMPOSITE</span>
+            <h2 class="section-title">Inside the Packaging Pipeline</h2>
+          </div>
+          <!-- Case Study Switcher Tabs -->
+          <div class="case-tabs" role="tablist" aria-label="Before and After Case Studies">
+            <button class="case-tab active" data-case="0" role="tab" aria-selected="true">01. IRL Challenge</button>
+            <button class="case-tab" data-case="1" role="tab" aria-selected="false">02. Tech Review</button>
+            <button class="case-tab" data-case="2" role="tab" aria-selected="false">03. Finance Doc</button>
+          </div>
+        </div>
+
+        <div class="comparison-wrapper glass-panel">
+          <!-- 16:9 Split Comparison Stage -->
+          <div id="comparison-stage" class="comparison-stage" tabindex="0" role="slider" aria-label="Before and After thumbnail comparison slider. Use Left and Right arrow keys to adjust." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            
+            <!-- RIGHT LAYER (Bottom Full Width): FINAL RENDER -->
+            <div class="comp-layer comp-after">
+              <img id="comp-after-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=85" alt="Final graded thumbnail composite" />
+              <div class="comp-final-overlay">
+                <div class="rim-glow"></div>
+                <div class="final-hook-box">
+                  <span class="final-hook-text" id="comp-hook-text">100 DAYS BURIED</span>
+                </div>
+                <div class="final-arrow-svg" aria-hidden="true">
+                  <svg viewBox="0 0 120 60" fill="none">
+                    <path d="M10 45 C 45 10, 75 10, 105 35" stroke="#FF0033" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M92 22 L108 37 L88 44" stroke="#FF0033" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="layer-badge badge-after mono">FINAL RENDER • 11.4% CTR</span>
+            </div>
+
+            <!-- LEFT LAYER (Clipped by Slider Width): RAW ASSET / SKETCH -->
+            <div id="comp-before-clip" class="comp-layer comp-before" style="width: 50%;">
+              <div class="comp-before-inner" id="comp-before-inner">
+                <img id="comp-before-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=80" alt="Raw ungraded camera frame with sketch lines" />
+                <!-- Rule of thirds & raw sketch annotations SVG -->
+                <svg class="sketch-grid-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+                  <line x1="533" y1="0" x2="533" y2="900" stroke="rgba(255,255,255,0.28)" stroke-dasharray="10,10" stroke-width="2"/>
+                  <line x1="1066" y1="0" x2="1066" y2="900" stroke="rgba(255,255,255,0.28)" stroke-dasharray="10,10" stroke-width="2"/>
+                  <line x1="0" y1="300" x2="1600" y2="300" stroke="rgba(255,255,255,0.28)" stroke-dasharray="10,10" stroke-width="2"/>
+                  <line x1="0" y1="600" x2="1600" y2="600" stroke="rgba(255,255,255,0.28)" stroke-dasharray="10,10" stroke-width="2"/>
+                  <rect x="80" y="90" width="620" height="190" fill="none" stroke="#06B6D4" stroke-width="4" stroke-dasharray="14,8"/>
+                  <text x="105" y="155" fill="#06B6D4" font-family="JetBrains Mono, monospace" font-size="28" font-weight="700">[HOOK TYPOGRAPHY ZONE]</text>
+                  <circle cx="1066" cy="420" r="190" fill="none" stroke="#eab308" stroke-width="4" stroke-dasharray="12,8"/>
+                  <text x="935" y="655" fill="#eab308" font-family="JetBrains Mono, monospace" font-size="24" font-weight="700">RELIGHT &amp; SEPARATE BG</text>
+                </svg>
+                <span class="layer-badge badge-before mono">RAW CAMERA FRAME / SKETCH</span>
+              </div>
+            </div>
+
+            <!-- Draggable Center Handle -->
+            <div id="comp-handle" class="comp-handle" style="left: 50%;" aria-hidden="true">
+              <div class="comp-handle-line"></div>
+              <div class="comp-handle-button">
+                <i data-lucide="move-horizontal" class="icon-sm"></i>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Upgrade Breakdown Bar -->
+          <div class="upgrade-breakdown-bar">
+            <div class="upgrade-meta">
+              <span class="badge-mono" id="comp-case-tag">CASE 01 // IRL CHALLENGE</span>
+              <h3 id="comp-case-title">Underground Bunker Survival</h3>
+            </div>
+            <div class="upgrade-pills" id="comp-upgrade-pills">
+              <div class="upgrade-pill">
+                <span class="pill-num mono">01</span>
+                <div>
+                  <strong>Subject Separation</strong>
+                  <p>Added dual-tone crimson/cyan rim light to pop silhouette on mobile dark mode.</p>
+                </div>
+              </div>
+              <div class="upgrade-pill">
+                <span class="pill-num mono">02</span>
+                <div>
+                  <strong>Gaze &amp; Scale Boost</strong>
+                  <p>Enlarged facial expression by 28% and brightened sclera for instant eye contact.</p>
+                </div>
+              </div>
+              <div class="upgrade-pill">
+                <span class="pill-num mono">03</span>
+                <div>
+                  <strong>3-Word Hook Hierarchy</strong>
+                  <p>Replaced 8-word title repeat with high-contrast impact typography in top-left safe zone.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- D. Interactive Feature 2: Live YouTube Feed Context Previewer -->
+    <section id="yt-previewer" class="section-padding">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="badge-mono badge-cyan"><i data-lucide="monitor-play" class="icon-xs"></i> REAL-WORLD CONTEXT SIMULATOR</span>
+            <h2 class="section-title">Live YouTube Feed Previewer</h2>
+          </div>
+          <p class="section-desc">
+            A thumbnail never exists in a vacuum. Test our portfolio pieces—or paste your own thumbnail URL—directly inside a simulated YouTube Home feed across Light/Dark themes and Mobile/Desktop viewports.
+          </p>
+        </div>
+
+        <!-- Simulator Controls & Custom Input Toolbar -->
+        <div class="simulator-toolbar glass-panel">
+          <div class="sim-toggles-group">
+            <!-- Theme Toggle -->
+            <div class="sim-control-block">
+              <span class="sim-label mono">YOUTUBE THEME</span>
+              <div class="segmented-control" role="group" aria-label="YouTube Theme Toggle">
+                <button type="button" class="seg-btn active" id="yt-theme-dark" data-theme="dark">
+                  <i data-lucide="moon" class="icon-xs"></i> Dark (#0F0F0F)
+                </button>
+                <button type="button" class="seg-btn" id="yt-theme-light" data-theme="light">
+                  <i data-lucide="sun" class="icon-xs"></i> Light (#FFFFFF)
+                </button>
+              </div>
+            </div>
+
+            <!-- Viewport Toggle -->
+            <div class="sim-control-block">
+              <span class="sim-label mono">VIEWPORT LAYOUT</span>
+              <div class="segmented-control" role="group" aria-label="Viewport Layout Toggle">
+                <button type="button" class="seg-btn active" id="yt-view-desktop" data-view="desktop">
+                  <i data-lucide="layout-grid" class="icon-xs"></i> Desktop 3-Col
+                </button>
+                <button type="button" class="seg-btn" id="yt-view-mobile" data-view="mobile">
+                  <i data-lucide="smartphone" class="icon-xs"></i> Mobile Feed
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Thumbnail URL & Title Tester -->
+          <form id="custom-preview-form" class="custom-preview-form">
+            <div class="sim-input-group">
+              <label for="custom-thumb-url" class="sim-label mono">CUSTOM THUMBNAIL IMAGE URL</label>
+              <input type="url" id="custom-thumb-url" class="sim-input" placeholder="https://images.unsplash.com/..." />
+            </div>
+            <div class="sim-input-group">
+              <label for="custom-video-title" class="sim-label mono">CUSTOM VIDEO TITLE</label>
+              <input type="text" id="custom-video-title" class="sim-input" placeholder="I Built a $10,000 AI Studio in 24 Hours!" maxlength="80" />
+            </div>
+            <div class="sim-input-group sim-channel-group">
+              <label for="custom-channel-name" class="sim-label mono">CHANNEL NAME</label>
+              <input type="text" id="custom-channel-name" class="sim-input" placeholder="Creator Lab" maxlength="32" />
+            </div>
+            <div class="sim-form-actions">
+              <button type="submit" class="btn btn-primary btn-sm">
+                <i data-lucide="sparkles" class="icon-xs"></i> Load into Slot #1
+              </button>
+              <button type="button" id="reset-preview-btn" class="btn btn-secondary btn-sm" title="Reset to default featured thumbnail">
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Simulated YouTube Browser Shell -->
+        <div id="yt-simulator-shell" class="yt-simulator-shell yt-dark yt-desktop">
+          <!-- Mock YouTube Top Bar -->
+          <div class="yt-topbar">
+            <div class="yt-topbar-left">
+              <span class="yt-menu-icon"><i data-lucide="menu" class="icon-sm"></i></span>
+              <div class="yt-brand">
+                <span class="yt-play-pill"><i data-lucide="play" class="icon-xs"></i></span>
+                <span class="yt-brand-text">YouTube</span>
+                <span class="yt-country-code">US</span>
+              </div>
+            </div>
+            <div class="yt-search-bar">
+              <span class="yt-search-placeholder">Search high-CTR packaging...</span>
+              <span class="yt-search-btn"><i data-lucide="search" class="icon-xs"></i></span>
+            </div>
+            <div class="yt-topbar-right">
+              <span class="badge-mono">SLOT #1 = ACTIVE TEST</span>
+            </div>
+          </div>
+
+          <!-- Mock YouTube Category Chips -->
+          <div class="yt-chips-bar">
+            <span class="yt-chip active">All</span>
+            <span class="yt-chip">Gaming</span>
+            <span class="yt-chip">Technology</span>
+            <span class="yt-chip">Podcasts</span>
+            <span class="yt-chip">Live</span>
+            <span class="yt-chip">Recently uploaded</span>
+          </div>
+
+          <!-- Simulated Feed Grid -->
+          <div id="yt-feed-grid" class="yt-feed-grid">
+            <!-- Populated dynamically via script.js (Slot #1 is test slot + 5 real-world competitor cards) -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- E. Interactive Feature 3: A/B Test Winner Showcase -->
+    <section id="ab-lab" class="section-padding">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="badge-mono badge-crimson"><i data-lucide="flask-conical" class="icon-xs"></i> YOUTUBE TEST &amp; COMPARE LAB</span>
+            <h2 class="section-title">Can You Spot the Higher-CTR Winner?</h2>
+          </div>
+          <p class="section-desc">
+            Click the thumbnail variation you think won the live YouTube split-test—or hit <strong>Reveal Test Data</strong> to inspect the watch-time share and psychological breakdown.
+          </p>
+        </div>
+
+        <!-- Scenario Selector Tabs -->
+        <div class="ab-scenario-tabs" role="tablist" aria-label="A/B Split Test Scenarios">
+          <button class="ab-tab active" data-ab="0" role="tab" aria-selected="true">Experiment #01: Tech Teardown</button>
+          <button class="ab-tab" data-ab="1" role="tab" aria-selected="false">Experiment #02: Finance Breakdown</button>
+          <button class="ab-tab" data-ab="2" role="tab" aria-selected="false">Experiment #03: Gaming Challenge</button>
+        </div>
+
+        <!-- A/B Interactive Arena -->
+        <div class="ab-arena glass-panel">
+          <div class="ab-arena-header">
+            <div>
+              <span class="badge-mono" id="ab-niche-badge">TECH NICHE • 48,000 IMPRESSIONS SAMPLE</span>
+              <h3 id="ab-video-title" class="ab-video-title">"Why Everyone Is Ditching Their $2,000 Laptop for This"</h3>
+            </div>
+            <div class="ab-header-actions">
+              <span id="ab-user-prompt" class="ab-prompt-pill"><i data-lucide="mouse-pointer-click" class="icon-xs"></i> Click a thumbnail to vote</span>
+              <button type="button" id="ab-reveal-btn" class="btn btn-secondary btn-sm">
+                <i data-lucide="bar-chart-3" class="icon-xs"></i> Reveal Test Data
+              </button>
+            </div>
+          </div>
+
+          <div class="ab-cards-grid">
+            <!-- Variant A Card -->
+            <div class="ab-variant-card" id="ab-card-A" data-variant="A" tabindex="0" role="button" aria-label="Vote for Variation A">
+              <div class="ab-card-top">
+                <span class="variant-tag mono">VARIATION A</span>
+                <span class="winner-pill mono" id="ab-badge-A"></span>
+              </div>
+              <div class="ab-thumb-wrap">
+                <img id="ab-img-A" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80" alt="Variation A Thumbnail" />
+                <div class="ab-overlay" id="ab-overlay-A"></div>
+              </div>
+              <div class="ab-metrics-drawer" id="ab-metrics-A">
+                <div class="ab-metric-row">
+                  <span>Watch-Time Share</span>
+                  <strong class="mono" id="ab-wt-A">41.2%</strong>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" id="ab-bar-A" style="width: 0%;"></div>
+                </div>
+                <div class="ab-metric-row mt-xs">
+                  <span>Measured CTR</span>
+                  <strong class="mono" id="ab-ctr-A">6.1%</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Variant B Card -->
+            <div class="ab-variant-card" id="ab-card-B" data-variant="B" tabindex="0" role="button" aria-label="Vote for Variation B">
+              <div class="ab-card-top">
+                <span class="variant-tag mono">VARIATION B</span>
+                <span class="winner-pill mono" id="ab-badge-B"></span>
+              </div>
+              <div class="ab-thumb-wrap">
+                <img id="ab-img-B" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=900&q=80" alt="Variation B Thumbnail" />
+                <div class="ab-overlay" id="ab-overlay-B"></div>
+              </div>
+              <div class="ab-metrics-drawer" id="ab-metrics-B">
+                <div class="ab-metric-row">
+                  <span>Watch-Time Share</span>
+                  <strong class="mono" id="ab-wt-B">58.8%</strong>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" id="ab-bar-B" style="width: 0%;"></div>
+                </div>
+                <div class="ab-metric-row mt-xs">
+                  <span>Measured CTR</span>
+                  <strong class="mono" id="ab-ctr-B">9.8%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Psychological Breakdown Reveal Box -->
+          <div id="ab-psychology-box" class="ab-psychology-box" aria-live="polite">
+            <div class="psych-icon"><i data-lucide="brain-circuit"></i></div>
+            <div class="psych-content">
+              <div class="psych-title-row">
+                <h4 id="ab-verdict-heading">Psychological Breakdown</h4>
+                <span class="badge-mono badge-emerald" id="ab-lift-pill">+3.7% CTR DELTA</span>
+              </div>
+              <p id="ab-psych-text">
+                Select Variation A or Variation B above to unlock the full conversion telemetry and visual psychology breakdown.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- F. Creator Testimonials & Subscriber Social Proof -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="badge-mono"><i data-lucide="shield-check" class="icon-xs"></i> VERIFIED CREATOR ROI</span>
+          <h2 class="section-title">Backed by Channels Scaling Past 100M Views</h2>
+        </div>
+
+        <div class="testimonials-bento">
+          <!-- Testimonial 1 -->
+          <article class="testimonial-card glass-panel">
+            <div class="testi-header">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Alex Rivera avatar" class="creator-avatar" />
+              <div class="creator-info">
+                <div class="creator-name-row">
+                  <h4>Alex Rivera</h4>
+                  <span class="verified-sub-badge mono"><i data-lucide="check-circle-2" class="icon-xs"></i> 4.2M Subs</span>
+                </div>
+                <span class="creator-niche">IRL &amp; Extreme Challenges</span>
+              </div>
+              <div class="ctr-delta-pill mono">5.1% → 10.4% CTR</div>
+            </div>
+            <p class="testi-quote">
+              "We revived three underperforming uploads purely by swapping in FRAME.LAB's A/B concepts within the first 6 hours. One packaging pivot took our bunker video from a 6/10 to a 1/10 with 4.8M views in 9 days."
+            </p>
+          </article>
+
+          <!-- Testimonial 2 -->
+          <article class="testimonial-card glass-panel">
+            <div class="testi-header">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Marcus Vance avatar" class="creator-avatar" />
+              <div class="creator-info">
+                <div class="creator-name-row">
+                  <h4>Marcus Vance</h4>
+                  <span class="verified-sub-badge mono"><i data-lucide="check-circle-2" class="icon-xs"></i> 1.1M Subs</span>
+                </div>
+                <span class="creator-niche">Hardware &amp; AI Engineering</span>
+              </div>
+              <div class="ctr-delta-pill mono">4.4% → 8.9% CTR</div>
+            </div>
+            <p class="testi-quote">
+              "Most designers just slap glow around a product photo. FRAME.LAB actually reads our scripts before we even shoot and sends us 3 facial expression prompts and prop setups. Our browse CTR doubled in 60 days."
+            </p>
+          </article>
+
+          <!-- Testimonial 3 -->
+          <article class="testimonial-card glass-panel">
+            <div class="testi-header">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Devon Brooks avatar" class="creator-avatar" />
+              <div class="creator-info">
+                <div class="creator-name-row">
+                  <h4>Devon Brooks</h4>
+                  <span class="verified-sub-badge mono"><i data-lucide="check-circle-2" class="icon-xs"></i> 850K Subs</span>
+                </div>
+                <span class="creator-niche">Personal Finance &amp; Macro Docs</span>
+              </div>
+              <div class="ctr-delta-pill mono">3.8% → 7.6% CTR</div>
+            </div>
+            <p class="testi-quote">
+              "Finance thumbnails are notorious for looking like cluttered spreadsheets. Their minimal high-contrast hooks gave our channel an unmistakable visual identity and added +$18k/mo in AdSense RPM uplift."
+            </p>
+          </article>
+
+          <!-- Testimonial 4 -->
+          <article class="testimonial-card glass-panel">
+            <div class="testi-header">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" alt="Kira Lindstrom avatar" class="creator-avatar" />
+              <div class="creator-info">
+                <div class="creator-name-row">
+                  <h4>Kira Lindstrom</h4>
+                  <span class="verified-sub-badge mono"><i data-lucide="check-circle-2" class="icon-xs"></i> 600K Subs</span>
+                </div>
+                <span class="creator-niche">Competitive Gaming &amp; Lore</span>
+              </div>
+              <div class="ctr-delta-pill mono">6.2% → 11.1% CTR</div>
+            </div>
+            <p class="testi-quote">
+              "Sub-24 hour turnaround is not marketing fluff—they deliver two distinct psychological angles for YouTube Test &amp; Compare every single Friday like clockwork."
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- G. Conversion-Engineered Pricing Packages -->
+    <section id="pricing" class="section-padding">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="badge-mono"><i data-lucide="credit-card" class="icon-xs"></i> TRANSPARENT PACKAGING TIERS</span>
+          <h2 class="section-title">Invest in High-Velocity Packaging</h2>
+          <p class="section-desc-center">
+            Every tier includes A/B test variations engineered specifically for YouTube's native <strong>Test &amp; Compare</strong> tool.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Tier 1: Single Viral Concept -->
+          <div class="pricing-card glass-panel">
+            <div class="pricing-top">
+              <span class="badge-mono">PER-UPLOAD SPRINT</span>
+              <h3>Single Viral Concept</h3>
+              <p class="pricing-sub">Ideal for flagship uploads, high-stakes sponsorships, or testing our workflow.</p>
+              <div class="price-display">
+                <span class="price-amount mono">$290</span>
+                <span class="price-period">/ video package</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" class="icon-xs text-cyan"></i> <strong>1 Flagship Thumbnail Concept</strong> (3D/Photo Composite)</li>
+              <li><i data-lucide="check" class="icon-xs text-cyan"></i> <strong>+1 A/B Test Variant</strong> (Hook or Color/Expression shift)</li>
+              <li><i data-lucide="check" class="icon-xs text-cyan"></i> 24–48 Hour Guaranteed Turnaround</li>
+              <li><i data-lucide="check" class="icon-xs text-cyan"></i> Title &amp; Curiosity-Gap Synergy Audit</li>
+              <li><i data-lucide="check" class="icon-xs text-cyan"></i> Full Editable Layered PSD + High-Res PNGs</li>
+            </ul>
+            <button type="button" class="btn btn-secondary w-full select-package-btn" data-package="Single Viral Concept ($290)">
+              <span>Select Single Concept</span>
+              <i data-lucide="arrow-down-right" class="icon-xs"></i>
+            </button>
+          </div>
+
+          <!-- Tier 2: 5-Pack Channel Bundle (MOST POPULAR) -->
+          <div class="pricing-card glass-panel popular-tier">
+            <div class="popular-ribbon mono">MOST POPULAR • SAVE $200</div>
+            <div class="pricing-top">
+              <span class="badge-mono badge-indigo">MONTHLY UPLOAD BUNDLE</span>
+              <h3>5-Pack Channel Bundle</h3>
+              <p class="pricing-sub">Built for weekly creators who want cohesive branding and relentless CTR testing.</p>
+              <div class="price-display">
+                <span class="price-amount mono">$1,250</span>
+                <span class="price-period">/ 5 videos ($250/ea)</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" class="icon-xs text-indigo"></i> <strong>5 Complete Video Thumbnail Packages</strong></li>
+              <li><i data-lucide="check" class="icon-xs text-indigo"></i> <strong>10 Total Deliverables</strong> (2 A/B variants per upload)</li>
+              <li><i data-lucide="check" class="icon-xs text-indigo"></i> Priority 24-Hour Turnaround Queue</li>
+              <li><i data-lucide="check" class="icon-xs text-indigo"></i> Private Dedicated Discord / Slack Comms Channel</li>
+              <li><i data-lucide="check" class="icon-xs text-indigo"></i> Pre-Shoot Expression &amp; Pose Shot List Guide</li>
+              <li><i data-lucide="check" class="icon-xs text-indigo"></i> Unlimited Iterative Revisions + Source PSDs</li>
+            </ul>
+            <button type="button" class="btn btn-primary w-full select-package-btn" data-package="5-Pack Channel Bundle ($1,250)">
+              <span>Lock In 5-Pack Bundle</span>
+              <i data-lucide="arrow-down-right" class="icon-xs"></i>
+            </button>
+          </div>
+
+          <!-- Tier 3: Monthly Creator Retainer -->
+          <div class="pricing-card glass-panel">
+            <div class="pricing-top">
+              <span class="badge-mono badge-crimson">DEDICATED PARTNER • 2 SLOTS LEFT</span>
+              <h3>Monthly Creator Retainer</h3>
+              <p class="pricing-sub">Full-stack packaging director embedded directly into your production team.</p>
+              <div class="price-display">
+                <span class="price-amount mono">$2,800</span>
+                <span class="price-period">/ month</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" class="icon-xs text-crimson"></i> <strong>Up to 12 Videos / Month</strong> (Includes 3-way A/B/C sets)</li>
+              <li><i data-lucide="check" class="icon-xs text-crimson"></i> <strong>Proactive Script-to-Concept Ideation</strong></li>
+              <li><i data-lucide="check" class="icon-xs text-crimson"></i> Live Post-Upload CTR Rescue Swaps (First 3 Hours)</li>
+              <li><i data-lucide="check" class="icon-xs text-crimson"></i> Back-Catalog Legacy Video CTR Refreshes</li>
+              <li><i data-lucide="check" class="icon-xs text-crimson"></i> Custom 3D Blender Environments &amp; Digital Doubles</li>
+              <li><i data-lucide="check" class="icon-xs text-crimson"></i> Same-Day 12–24h Turnaround SLA</li>
+            </ul>
+            <button type="button" class="btn btn-secondary w-full select-package-btn" data-package="Monthly Creator Retainer ($2,800/mo)">
+              <span>Apply for Retainer Slot</span>
+              <i data-lucide="arrow-down-right" class="icon-xs"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- H. Turnaround Time, Workflow & Revisions FAQ Accordion -->
+    <section id="faq" class="section-padding">
+      <div class="container faq-container">
+        <div class="section-header-center">
+          <span class="badge-mono"><i data-lucide="help-circle" class="icon-xs"></i> PRODUCTION WORKFLOW FAQ</span>
+          <h2 class="section-title">Everything Creators Ask Before Hiring</h2>
+        </div>
+
+        <div class="faq-accordion" id="faq-accordion">
+          <!-- Question 1 -->
+          <div class="faq-item glass-panel">
+            <button class="faq-trigger" aria-expanded="true">
+              <span>1. What is your average turnaround time?</span>
+              <span class="faq-icon"><i data-lucide="plus"></i></span>
+            </button>
+            <div class="faq-content" style="max-height: 260px;">
+              <div class="faq-body">
+                First high-resolution concepts (plus A/B variants) are delivered within <strong>24 hours</strong> for Bundle and Retainer clients, and within <strong>24–48 hours</strong> for Single Concept sprints. If you have an urgent upload going live same-day, our Retainer tier includes a 12-hour rapid-response lane.
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="faq-item glass-panel">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>2. How do revisions work during an active upload schedule?</span>
+              <span class="faq-icon"><i data-lucide="plus"></i></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                We communicate asynchronously in a shared Discord or Slack channel with zero bureaucratic bottlenecks. Revision rounds (color tweaks, text swaps, expression changes) are turned around in <strong>2 to 4 hours</strong>. We also stay on standby for the first 3 hours after you publish in case real-time YouTube Studio analytics call for a rapid pivot.
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="faq-item glass-panel">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>3. Do you provide A/B test variations for YouTube's "Test &amp; Compare" feature?</span>
+              <span class="faq-icon"><i data-lucide="plus"></i></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Yes—every single package includes A/B variations out of the box. Instead of lazy text color swaps, we engineer meaningfully distinct psychological angles (e.g., <em>Close-Up Emotion vs. Wide Environmental Scale</em> or <em>Text Hook vs. Visual Mystery</em>) so your Test &amp; Compare experiments produce statistically significant watch-time winners.
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="faq-item glass-panel">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>4. Do you come up with the thumbnail concepts, or do I need to brief you?</span>
+              <span class="faq-icon"><i data-lucide="plus"></i></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Either way works. You can send us a rough sketch/brief, OR simply drop your raw video title, Notion script, or rough cut link. Our team will pitch <strong>3 distinct wireframed thumbnail hooks</strong> and tell you the exact 2 facial expressions or photos to snap on your phone before we render.
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="faq-item glass-panel">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>5. What files and assets do you need from me to start?</span>
+              <span class="faq-icon"><i data-lucide="plus"></i></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                Just a Google Drive or Frame.io folder containing 3–5 well-lit headshots/expressions (or raw 4K video frames) plus your working video title. Once onboarded, we build a reusable "Creator Expression Library" for your channel so you don't even have to shoot new photos for every upload.
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 6 -->
+          <div class="faq-item glass-panel">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>6. Do I get the editable PSD / project files?</span>
+              <span class="faq-icon"><i data-lucide="plus"></i></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                100%. Every delivery folder includes upload-ready compressed <code>.PNG</code> / <code>.JPG</code> files (strictly under YouTube's 2MB limit with zero compression artifacts) alongside the clean, color-coded, non-destructive <code>.PSD</code> source file.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- I. Frictionless Booking & Contact Section -->
+    <section id="contact" class="section-padding">
+      <div class="container">
+        <div class="contact-bento-grid">
+          
+          <!-- Left Column: Direct Booking & Instant Comms -->
+          <div class="contact-direct-card glass-panel">
+            <span class="badge-mono badge-emerald"><i data-lucide="radio" class="icon-xs"></i> DIRECT DISPATCH</span>
+            <h2 class="contact-title">Ready to Scale Your Channel's CTR?</h2>
+            <p class="contact-desc">
+              Skip the agency runaround. Add us directly on Discord for a 5-minute packaging audit of your last 3 uploads, or lock in your project brief on the right.
+            </p>
+
+            <div class="direct-action-stack">
+              <!-- One-Click Copy Discord Card -->
+              <div class="direct-channel-box">
+                <div class="channel-meta">
+                  <span class="channel-label mono">FASTEST RESPONSE (&lt; 2 HOURS)</span>
+                  <strong class="channel-handle mono">Discord: framelab.gg</strong>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm copy-discord-btn" data-discord="framelab.gg">
+                  <i data-lucide="copy" class="icon-xs"></i>
+                  <span class="copy-btn-label">Copy Handle</span>
+                </button>
+              </div>
+
+              <!-- Calendly Discovery Call Modal Trigger -->
+              <div class="direct-channel-box">
+                <div class="channel-meta">
+                  <span class="channel-label mono">LIVE PACKAGING AUDIT</span>
+                  <strong class="channel-handle">15-Min Strategy Call (Calendly)</strong>
+                </div>
+                <button type="button" id="open-calendly-btn" class="btn btn-secondary btn-sm">
+                  <i data-lucide="calendar" class="icon-xs"></i>
+                  <span>View Slots</span>
+                </button>
+              </div>
+
+              <!-- Direct Email Link -->
+              <div class="direct-channel-box">
+                <div class="channel-meta">
+                  <span class="channel-label mono">DIRECT EMAIL DISPATCH</span>
+                  <strong class="channel-handle mono">producers@framelab.gg</strong>
+                </div>
+                <a href="mailto:producers@framelab.gg?subject=YouTube%20Thumbnail%20Packaging%20Inquiry" class="btn btn-secondary btn-sm">
+                  <i data-lucide="mail" class="icon-xs"></i>
+                  <span>Email Us</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="retainer-guarantee">
+              <i data-lucide="shield" class="icon-sm text-cyan"></i>
+              <p><strong>Zero-Risk Guarantee:</strong> If our A/B variation doesn't beat your control thumbnail in YouTube Test &amp; Compare, your next concept sprint is 100% free.</p>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Project Inquiry Form -->
+          <div class="contact-form-card glass-panel">
+            <div class="form-header">
+              <span class="badge-mono">PROJECT BRIEF GENERATOR</span>
+              <h3>Start a Thumbnail Sprint</h3>
+            </div>
+
+            <form id="project-inquiry-form" novalidate>
+              <div class="form-row-split">
+                <div class="form-group">
+                  <label for="client-name" class="form-label">Your Name / Handle *</label>
+                  <input type="text" id="client-name" name="clientName" class="form-input" placeholder="e.g., Alex (@AlexRiveraYT)" required />
+                </div>
+                <div class="form-group">
+                  <label for="channel-url" class="form-label">YouTube Channel URL *</label>
+                  <input type="text" id="channel-url" name="channelUrl" class="form-input" placeholder="youtube.com/@yourchannel" required />
+                </div>
+              </div>
+
+              <div class="form-row-split">
+                <div class="form-group">
+                  <label for="package-select" class="form-label">Selected Package *</label>
+                  <select id="package-select" name="packageSelect" class="form-select" required>
+                    <option value="Single Viral Concept ($290)">Single Viral Concept ($290)</option>
+                    <option value="5-Pack Channel Bundle ($1,250)" selected>5-Pack Channel Bundle ($1,250) — Popular</option>
+                    <option value="Monthly Creator Retainer ($2,800/mo)">Monthly Creator Retainer ($2,800/mo)</option>
+                    <option value="Custom Agency / Multi-Channel Deal">Custom Agency / Multi-Channel Deal</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="upload-freq" class="form-label">Upload Frequency</label>
+                  <select id="upload-freq" name="uploadFreq" class="form-select">
+                    <option value="1x per week">1x per week</option>
+                    <option value="2-3x per week">2–3x per week</option>
+                    <option value="2x per month (High Production)">2x per month (High Production)</option>
+                    <option value="Daily / Multi-channel">Daily / Multi-channel</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="project-details" class="form-label">Upcoming Video Title / Concept Idea *</label>
+                <textarea id="project-details" name="projectDetails" rows="4" class="form-textarea" placeholder="Tell us your working video title, current average CTR, and target upload date..." required></textarea>
+              </div>
+
+              <div id="form-error-msg" class="form-error-msg" role="alert" aria-live="assertive"></div>
+
+              <button type="submit" class="btn btn-primary btn-lg w-full">
+                <span>Generate Brief &amp; Dispatch</span>
+                <i data-lucide="send" class="icon-sm"></i>
+              </button>
+            </form>
+
+            <!-- Simulated Submission Payload Drawer -->
+            <div id="submission-result" class="submission-result" aria-live="polite" hidden>
+              <div class="submission-top">
+                <span class="badge-mono badge-emerald"><i data-lucide="check-circle" class="icon-xs"></i> BRIEF FORMATTED &amp; READY</span>
+                <button type="button" id="edit-brief-btn" class="text-btn">Edit Brief</button>
+              </div>
+              <pre id="brief-payload-preview" class="brief-payload-preview mono"></pre>
+              <div class="submission-actions">
+                <button type="button" id="copy-brief-btn" class="btn btn-primary btn-sm">
+                  <i data-lucide="copy" class="icon-xs"></i> Copy Brief for Discord
+                </button>
+                <a id="mailto-brief-link" href="#" class="btn btn-secondary btn-sm">
+                  <i data-lucide="external-link" class="icon-xs"></i> Open in Email Client
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="brand-logo">
+          <span class="logo-mark"><i data-lucide="scan-eye"></i></span>
+          <span class="logo-text">FRAME<span class="accent-dot">.</span>LAB</span>
+        </a>
+        <p class="footer-tagline">High-velocity YouTube packaging &amp; A/B conversion studio.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#work">Portfolio</a>
+        <a href="#before-after">Before/After</a>
+        <a href="#yt-previewer">YT Simulator</a>
+        <a href="#ab-lab">A/B Lab</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footer-copy mono">
+        &copy; <span id="footer-year">2026</span> FRAME.LAB STUDIO. ALL RIGHTS RESERVED.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla ES6+ Application Logic -->
+  <script src="./script.js"></script>
+</body>
+</html>
